@@ -1,0 +1,10 @@
+postgresql:
+  image: postgres:10-alpine
+  ports:
+    - 5433:5432
+  environment:
+    - PGDATA=/postgresql
+    - POSTGRES_PASSWORD=password
+  restart: unless-stopped
+  volumes:
+    - ./tmp/data/postgresql:/postgresql

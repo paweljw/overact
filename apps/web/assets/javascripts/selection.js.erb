@@ -1,0 +1,136 @@
+function addScript(src) { var s = document.createElement('script'); s.src = src; document.head.appendChild(s); }
+
+function checkGo () {
+  if (window.movieTarget1 && window.movieTarget2) {
+    document.getElementById('go').removeAttribute('disabled');
+  } else {
+    document.getElementById('go').setAttribute('disabled', 'disabled');
+  }
+}
+
+function selectMovie(event) {
+  let target = event.target;
+
+  while(target.tagName !== 'LI') {
+    target = target.parentElement;
+  }
+
+  const movieId = target.getAttribute('data-tt');
+
+  let divParent = target.parentElement;
+
+  while(!divParent.id.match(/results_/)) {
+    divParent = divParent.parentElement;
+  }
+
+  const movieTarget = divParent.id.replace('results_', 'movieTarget');
+
+  Array.from(divParent.getElementsByTagName('LI')).forEach(element => {
+    console.log(element);
+    element.classList.remove('active');
+  })
+
+  if(window[movieTarget] === movieId) {
+    window[movieTarget] = null;
+  } else {
+    window[movieTarget] = movieId;
+    target.classList.add('active');
+  }
+
+  checkGo();
+}
+
+function normalizeForImdb(value) {
+  return value.replace(' ', '_');
+}
+
+function ul(...children) {
+  const ul = document.createElement('ul');
+  children.forEach(child => ul.appendChild(child));
+  return ul;
+}
+
+function li(tt, ...children) {
+  const li = document.createElement('li');
+  li.setAttribute('data-tt', tt);
+  li.addEventListener('click', selectMovie);
+  children.forEach(child => li.appendChild(child));
+  return li;
+}
+
+function h3(text) {
+  const h3 = document.createElement('h3');
+  h3.innerText = text;
+  return h3;
+}
+
+function p(text) {
+  const p = document.createElement('p');
+  p.innerText = text;
+  return p;
+}
+
+function displayResults(results, targetElement) {
+  const tree = ul(
+    ...results.d.map(item => li(
+      item.id,
+      ...[
+        h3(item.l),
+        p('Starring ' + item.s)
+      ]
+    ))
+  )
+
+  targetElement.innerHTML = '';
+  targetElement.appendChild(tree);
+}
+
+function search(value, targetElement) {
+  const normalizedValue = normalizeForImdb(value);
+  const firstLetter = normalizedValue[0];
+
+  window['imdb$'+normalizedValue] = function(results) {
+    console.log(results);
+    displayResults(results, targetElement);
+    window['imdb$'+normalizedValue] = null;
+  }
+
+  addScript('https://sg.media-imdb.com/suggests/' + firstLetter + '/' + normalizedValue + '.json')
+}
+
+window.onload = function () {
+  const button1 = document.getElementById('show_1_search');
+
+  button1.addEventListener('click', function(e) {
+    e.preventDefault();
+    const value = document.getElementById('show_1_name').value;
+    const targetElement = document.getElementById('results_1');
+
+    console.log(value, targetElement)
+
+    search(value, targetElement);
+  });
+
+  const button2 = document.getElementById('show_2_search');
+
+  button2.addEventListener('click', function(e) {
+    e.preventDefault();
+    const value = document.getElementById('show_2_name').value;
+    const targetElement = document.getElementById('results_2');
+
+    console.log(value, targetElement)
+
+    search(value, targetElement);
+  });
+
+  buttonGo = document.getElementById('go');
+
+  buttonGo.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = '/compare/' + window.movieTarget1 + '/' + window.movieTarget2;
+  })
+
+  checkGo();
+}
+
+window.search = search;
