@@ -7,7 +7,10 @@
 }
 
 img {
-  max-width: 150px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: 50% 0;
 }
 
 .character-name {
@@ -25,5 +28,39 @@ img {
 
 .cast-row {
   border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 30px !important;
+}
+
+img.lazy {
+  width: 1px;
+  height: 1px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+.image-container {
+  width: 150px;
+  height: 150px;
+  margin-bottom: -15px;
+}
+
+.movie-header {
+  position: sticky;
+  top: 0px;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
 }

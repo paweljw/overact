@@ -2,6 +2,9 @@ require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
 require 'sidekiq'
+# Work around Hanami running initializers _after_ project code is loaded
+# https://guides.hanamirb.org/projects/initializers/
+require_relative './initializers/shrine.rb'
 require_relative '../lib/overact'
 require_relative '../apps/web/application'
 

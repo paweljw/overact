@@ -24,7 +24,6 @@ class MovieSyncWorker
     actor_repo = ActorRepository.new
     role_repo = RoleRepository.new
 
-    puts "Movie name: #{movie_name}"
     table.each do |el|
       next if el.css('td').count < 2
       first_link = el.css('a')[1]
@@ -38,19 +37,16 @@ class MovieSyncWorker
       image_url = el.css('img').first&.attr('loadlate') &.gsub(/@@(.*)\.jpg/, '@@.jpg')&.gsub(/\._(.*)\.jpg/, '.jpg')
 
       unless actor
-        actor_object = Actor.new(name: actor_name, tt_id: nm_id, image_url: image_url)
-        actor = actor_repo.create(actor_object)
+        actor = actor_repo.create({ name: actor_name, tt_id: nm_id, image_url: image_url })
+        PhotoDownloadWorker.perform_async(actor.id)
       end
 
       role = role_repo.find_by_movie_and_actor(movie_id: movie.id, actor_id: actor.id)
 
-      puts "rn - '#{role_name}'"
       unless role
         role_object = Role.new(movie_id: movie.id, actor_id: actor.id, character_name: role_name || 'Unavailable')
         role = role_repo.create(role_object)
       end
-
-      puts role
     end
 
     movie_repo.update(movie.id, Movie.new(name: movie_name, status: Movie::CHECKED))

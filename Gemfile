@@ -7,6 +7,7 @@ gem 'nokogiri'
 
 gem 'pg'
 
+gem 'shrine', '~> 3.0'
 gem 'sidekiq', '~> 6.0', '>= 6.0.2'
 
 group :development do
