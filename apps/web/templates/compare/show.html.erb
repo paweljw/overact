@@ -1,0 +1,33 @@
+<% if !(movie1&.checked? && movie2&.checked?) %>
+  <h1>Hamsters are working, give 'em a hot minute</h1>
+  <script type="text/javascript">
+    window.onload = function () { setTimeout(function () { console.log('hi'); window.location.reload(); }, 2000) }
+  </script>
+<% else %>
+  <h1>Cast overlap between <%= movie1.name %> and <%= movie2.name %></h1>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3 movie-column">
+      <h2><%= movie1.name %></h2>
+    </div>
+    <div class="col-3 movie-column">
+      <h2><%= movie2.name %></h2>
+    </div>
+  </div>
+    <% overlap.each do |(actor, r1, r2)| %>
+      <div class="row cast-row">
+        <div class="col-3 direction-column actor-slot">
+          <img src="<%= actor.image_url || 'https://via.placeholder.com/150' %>" />
+          <br/>
+          <h3 class="actor-name"><%= actor.name %></h3>
+        </div>
+        <div class="col-3 character-name">
+          <strong><%= r1.character_name %></strong>
+        </div>
+        <div class="col-3 character-name">
+          <strong><%= r2.character_name %></strong>
+        </div>
+      </div>
+    <% end %>
+  </p>
+<% end %>

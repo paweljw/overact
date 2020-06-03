@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
+require 'sidekiq'
 require_relative '../lib/overact'
 require_relative '../apps/web/application'
 

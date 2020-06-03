@@ -225,7 +225,7 @@ module Web
         frame-ancestors 'self';
         base-uri 'self';
         default-src 'none';
-        script-src 'self' https://sg.media-imdb.com;
+        script-src 'self' 'inline' 'unsafe-inline' https: https://sg.media-imdb.com;
         connect-src 'self';
         img-src 'self' https: data:;
         style-src 'self' 'unsafe-inline' https:;

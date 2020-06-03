@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+}
+.col-3 {
+  display: flex;
+  flex: 1;
+}
+
+img {
+  max-width: 150px;
+}
+
+.character-name {
+  align-items: flex-end;
+}
+
+.actor-name {
+  align-items: flex-end;
+  margin-bottom: 0px;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.cast-row {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
