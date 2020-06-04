@@ -1,6 +1,8 @@
 module Web
   module Controllers
     module Compare
+      # TODO: validate parameters
+      # TODO: refactor that call for goodness' sake
       class Show
         include Web::Action
 

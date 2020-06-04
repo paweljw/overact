@@ -1,4 +1,4 @@
-RSpec.describe Web::Controllers::Compare::Show, type: :action do
+RSpec.xdescribe Web::Controllers::Compare::Show, type: :action do
   let(:action) { described_class.new }
   let(:params) { Hash[] }
 
