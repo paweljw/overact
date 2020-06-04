@@ -1,15 +1,18 @@
-<% if !(movie1&.checked? && movie2&.checked?) %>
-  <h1>Hamsters are working, give 'em a hot minute</h1>
-  <script type="text/javascript">
-    window.onload = function () { setTimeout(function () { console.log('hi'); window.location.reload(); }, 2000) }
-  </script>
-<% else %>
-  <h1>Cast overlap between <%= movie1.name %> and <%= movie2.name %> (<%= overlap.count %> in common)</h1>
-
-  <a href="<%= Web.routes.root_path %>">Pick a new pair</a>
-  <%= render partial: 'movie_header' %>
-  <% overlap.each do |row| %>
-    <%= render partial: 'actor', locals: { row: row } %>
+<% if params.valid? %>
+  <% if !movies_ready? %>
+    <h1>Hamsters are working, give 'em a hot minute</h1>
+    <script type="text/javascript">
+      window.onload = function () { setTimeout(function () { console.log('hi'); window.location.reload(); }, 2000) }
+    </script>
+  <% else %>
+    <h1>Cast overlap between <%= movie1.name %> and <%= movie2.name %> (<%= overlap.count %> in common)</h1>
+    <%= link_to 'Pick a new pair', Web.routes.root_path %>
+    <%= render partial: 'movie_header' %>
+    <% overlap.each do |row| %>
+      <%= render partial: 'actor', locals: { row: row } %>
+    <% end %>
+    </p>
   <% end %>
-  </p>
+<% else %>
+  <h1><em>This doesn't look like anything to me.</em></h1>
 <% end %>
