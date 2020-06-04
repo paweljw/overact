@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'hanami/setup'
 require 'hanami/model'
+require 'hanami/interactor' # huh
 require 'sidekiq'
 
 # Work around Hanami running initializers _after_ project code is loaded
