@@ -1,8 +1,10 @@
 # Overact
 
-Welcome to your new Hanami project!
+A small application to compare actor lists between two shows, built to satisfy certain curiosities that can only emerge in self-isolation.
 
-## Setup
+Created using Hanami, Shrine, and blatant scraping of IMDb.
+
+## Development
 
 How to run tests:
 
