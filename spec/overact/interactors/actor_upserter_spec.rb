@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe ActorUpserter do
@@ -7,7 +9,6 @@ RSpec.describe ActorUpserter do
   let(:actor) { double(id: 123) }
 
   context 'when actor already existed' do
-
     it 'returns the actor' do
       expect(actor_repo).to receive(:find_by_tt).and_return(actor)
       expect(actor_repo).to_not receive(:create)

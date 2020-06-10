@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OverlapFinder
   include Hanami::Interactor
 
@@ -17,7 +19,7 @@ class OverlapFinder
       [
         @actor_repo.find(actor_id),
         @role_repo.find_by_movie_and_actor(movie_id: movie1_id, actor_id: actor_id),
-        Role.new(role),
+        Role.new(role)
       ]
     end
   end

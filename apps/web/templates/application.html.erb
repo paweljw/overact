@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Overact</title>
+    <title><%= "#{local(:page_title)} | " unless local(:page_title).empty? %>Overact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
     <%= favicon %>
     <%= stylesheet 'layout', 'selection', 'compare' %>
     <%= javascript 'lazy' %>
   </head>
   <body>
-    <%= yield %>
-    <div class="row">
-      <p>Built with <3 by Pawel J. Wal</p>
+    <div class="header">
+      <%= link_to 'Overact', Web.routes.root_path %></p>
+    </div>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+    <div class="row footer">
+      <div class="col no-flex">
+        <p>Built with ❤ by Paweł J. Wal</p>
+      </div>
     </div>
   </body>
 </html>

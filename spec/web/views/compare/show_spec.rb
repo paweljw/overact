@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Web::Views::Compare::Show, type: :view do
   let(:exposures) { Hash[format: :html, overlapping_roles: overlapping_roles, movie1: movie1, movie2: movie2] }
   let(:template)  { Hanami::View::Template.new('apps/web/templates/compare/show.html.erb') }
@@ -6,7 +8,6 @@ RSpec.describe Web::Views::Compare::Show, type: :view do
   let(:overlapping_roles) { [[double, double, double]] }
   let(:movie1) { double(checked?: true) }
   let(:movie2) { double(checked?: true) }
-
 
   it 'exposes #format' do
     expect(view.format).to eq exposures.fetch(:format)

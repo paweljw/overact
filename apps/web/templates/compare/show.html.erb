@@ -5,8 +5,13 @@
       window.onload = function () { setTimeout(function () { console.log('hi'); window.location.reload(); }, 2000) }
     </script>
   <% else %>
-    <h1>Cast overlap between <%= movie1.name %> and <%= movie2.name %> (<%= overlap.count %> in common)</h1>
-    <%= link_to 'Pick a new pair', Web.routes.root_path %>
+    <p class="prelude">Cast overlap between</p>
+    <h1 class="comparison">
+      <%= movie1.name %>
+      <span class="joiner">and</span>
+      <%= movie2.name %>
+    </h1>
+    <p class="summary">(<%= overlap.count %> in common)</p>
     <%= render partial: 'movie_header' %>
     <% overlap.each do |row| %>
       <%= render partial: 'actor', locals: { row: row } %>

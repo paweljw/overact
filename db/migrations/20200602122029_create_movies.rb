@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Hanami::Model.migration do
   change do
     create_table :movies do
       primary_key :id
-      
+
       column :name, String, null: false
       column :tt_id, String, null: false
 

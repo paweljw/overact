@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Web::ActorPresenter do
@@ -13,7 +15,7 @@ RSpec.describe Web::ActorPresenter do
     end
 
     context 'when missing' do
-      let(:actor) { Actor.new() }
+      let(:actor) { Actor.new }
 
       it 'is nil' do
         expect(subject.photo).to be_nil

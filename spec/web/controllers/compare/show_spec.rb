@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Web::Controllers::Compare::Show, type: :action do
   include Rack::Test::Methods
 
@@ -28,7 +30,7 @@ RSpec.describe Web::Controllers::Compare::Show, type: :action do
         expect(movie_enqueuer).to receive(:call).with(tt_id: 'tt456').and_return(movie_result2)
         expect(overlap_finder).to_not receive(:call)
 
-        response = action.call(movie1: 'tt123', movie2: 'tt456')
+        action.call(movie1: 'tt123', movie2: 'tt456')
         expect(action.exposures[:movie1]).to eq movie1
         expect(action.exposures[:movie2]).to eq movie2
       end
@@ -45,7 +47,7 @@ RSpec.describe Web::Controllers::Compare::Show, type: :action do
         expect(movie_enqueuer).to receive(:call).with(tt_id: 'tt456').and_return(movie_result2)
         expect(overlap_finder).to receive(:call).with(movie1_id: 'tt123', movie2_id: 'tt456').and_return(overlap_result)
 
-        response = action.call(movie1: 'tt123', movie2: 'tt456')
+        action.call(movie1: 'tt123', movie2: 'tt456')
         expect(action.exposures[:overlapping_roles]).to eq overlap
       end
     end

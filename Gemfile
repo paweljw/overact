@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'rake'
 gem 'haml'
-gem 'hanami',       '~> 1.3'
+gem 'hanami', '~> 1.3'
 gem 'hanami-model', '~> 1.3'
-gem 'nokogiri'
 gem 'image_processing', '~> 1.8'
+gem 'nokogiri'
+gem 'rake'
 
 gem 'pg'
 
@@ -15,9 +17,10 @@ gem 'sidekiq', '~> 6.0', '>= 6.0.2'
 group :development do
   # Code reloading
   # See: https://guides.hanamirb.org/projects/code-reloading
-  gem 'shotgun', platforms: :ruby
   gem 'hanami-webconsole'
   gem 'pry'
+  gem 'rubocop'
+  gem 'shotgun', platforms: :ruby
 end
 
 group :test, :development do
@@ -25,8 +28,8 @@ group :test, :development do
 end
 
 group :test do
-  gem 'rspec'
   gem 'capybara'
+  gem 'rspec'
 end
 
 group :production do

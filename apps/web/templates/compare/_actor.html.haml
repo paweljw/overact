@@ -8,7 +8,11 @@
     %br
     %h3.actor-name
       = link_to row.actor.name, row.actor.imdb_url
-  .col.character_name
-    %strong= row.role1.character_name
-  .col.character_name
-    %strong= row.role2.character_name
+  .col.character-name
+    %strong
+      %span.movie-role= "#{movie1.name}: "
+      = row.role1.character_name
+  .col.character-name
+    %strong
+      %span.movie-role= "#{movie2.name}: "
+      = row.role2.character_name

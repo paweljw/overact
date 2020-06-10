@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Web
   module Controllers
     module Compare
@@ -17,14 +19,14 @@ module Web
         end
 
         def call(params)
-          if params.valid?
-            @movie1 = @movie_enqueuer.call(tt_id: params[:movie1]).movie
-            @movie2 = @movie_enqueuer.call(tt_id: params[:movie2]).movie
+          return unless params.valid?
 
-            if @movie1.checked? && @movie2.checked?
-              @overlapping_roles = @overlap_finder.call(movie1_id: @movie1.id, movie2_id: @movie2.id).overlap
-            end
-          end
+          @movie1 = @movie_enqueuer.call(tt_id: params[:movie1]).movie
+          @movie2 = @movie_enqueuer.call(tt_id: params[:movie2]).movie
+
+          return unless @movie1.checked? && @movie2.checked?
+
+          @overlapping_roles = @overlap_finder.call(movie1_id: @movie1.id, movie2_id: @movie2.id).overlap
         end
       end
     end

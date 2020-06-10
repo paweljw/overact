@@ -1,0 +1,26 @@
+AllCops:
+  TargetRubyVersion: 2.6
+
+  Exclude:
+    - 'bin/**/*'
+    - 'tmp/**/*'
+    - 'apps/web/application.rb'
+    - 'Rakefile'
+
+Layout/LineLength:
+  Max: 125
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: exception
+
+Style/Documentation:
+  Enabled: false
+
+Style/TrailingUnderscoreVariable:
+  Enabled: false

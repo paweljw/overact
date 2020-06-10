@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Web
   class ActorPresenter
     include Hanami::Presenter
@@ -8,6 +10,7 @@ module Web
       return _raw(photo_url) if photo_url
       # ugly hack due to double-escaping somewhere
       return _raw(image_url.gsub('&#x2F;', '/')) if image_url
+
       _raw('https://via.placeholder.com/150')
     end
 

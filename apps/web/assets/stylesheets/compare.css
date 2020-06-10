@@ -7,11 +7,12 @@ img {
 
 .character-name {
   align-items: flex-end;
+  margin-bottom: 5px;
 }
 
 .actor-name {
   align-items: flex-end;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
 }
 
 .direction-column {
@@ -55,4 +56,56 @@ img.lazy {
   top: 0px;
   background: #fff;
   border-bottom: 1px solid #ccc;
+  display: none !important;
+}
+
+p.prelude, p.summary {
+  font-size: 80%;
+  color: #444;
+  text-align: center;
+  width: 100%;
+  padding: 2px 0;
+  margin: 5px 0 3px 0;
+}
+
+p.prelude {
+  margin-top: 20px;
+}
+
+p.summary {
+  margin-bottom: 20px;
+}
+
+h1.comparison {
+  text-align: center;
+  margin: 0 auto;
+}
+
+h1.comparison span.joiner {
+  font-size: 60%;
+  color: #444;
+  display: block;
+}
+
+.movie-role {
+  color: #666;
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  h1.comparison span.joiner {
+    display: inline;
+  }
+
+  .movie-header {
+    display: flex !important;
+  }
+
+  .movie-role {
+    display: none;
+  }
+
+  .actor-name {
+    margin-bottom: 0px;
+  }
 }

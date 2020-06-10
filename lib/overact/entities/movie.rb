@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Movie < Hanami::Entity
-  CHECKING = 'checking'.freeze
-  CHECKED  = 'checked'.freeze
+  CHECKING = 'checking'
+  CHECKED  = 'checked'
 
   def checked?
     status == CHECKED

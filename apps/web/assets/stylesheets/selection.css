@@ -8,6 +8,25 @@
   cursor: pointer;
 }
 
+#show_1, #show_2 {
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #show_1, #show_2 {
+    width: 100%;
+  }
+}
+
+#show_1 input, #show_2 input {
+  flex: 2;
+}
+
+#show_1 button, #show_2 button {
+  flex: 1;
+}
+
 #results_1 ul li h3, #results_2 ul li h3 {
   margin: 0 0 5px 0;
 }
@@ -21,19 +40,20 @@
 }
 
 button#go {
-  background: green;
+  background: #3D9970;
   display: block;
-  padding: 20px;
+  padding: 15px;
   width: 100%;
   font-size: 16px;
   color: white;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
+  box-shadow: none;
 }
 
 button#go:disabled {
-  color: gray;
-  background: #ccc;
+  color: #ddd;
+  background: #aaaaaa;
   cursor: not-allowed;
 }

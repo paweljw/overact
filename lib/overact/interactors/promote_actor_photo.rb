@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PromoteActorPhoto
   def initialize(repo: ActorRepository.new, attacher: PhotoUploader::Attacher.new)
     @repo = repo

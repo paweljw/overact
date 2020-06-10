@@ -1,22 +1,26 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 require 'ostruct'
 
 class MovieScraper
-  def self.wrap_actor(el)
-    first_link = el.css('a')[1]
+  # TODO: whisk this very far away
+  # rubocop:disable Metrics/AbcSize
+  def self.wrap_actor(element)
+    first_link = element.css('a')[1]
 
-    actor_name = first_link.text.strip
     nm_id = first_link.attr('href').split('/')[2]
-    role_name = el.css('td')[3].text.split("\n")[1].strip[1..-1]
-    image_url = el.css('img').first&.attr('loadlate') &.gsub(/@@(.*)\.jpg/, '@@.jpg')&.gsub(/\._(.*)\.jpg/, '.jpg')
+    role_name = element.css('td')[3].text.split("\n")[1].strip[1..-1]
+    image_url = element.css('img').first&.attr('loadlate') &.gsub(/@@(.*)\.jpg/, '@@.jpg')&.gsub(/\._(.*)\.jpg/, '.jpg')
 
     OpenStruct.new(
-      name: actor_name,
+      name: first_link.text.strip,
       tt_id: nm_id,
       character_name: role_name,
       image_url: image_url
     )
   end
+  # rubocop:enable Metrics/AbcSize
 
   def initialize(tt_id:, nokogiri: Nokogiri::HTML)
     @url = "https://www.imdb.com/title/#{tt_id}/fullcredits"
@@ -38,7 +42,9 @@ class MovieScraper
   private
 
   def doc
+    # rubocop:disable Security/Open
     @doc ||= Nokogiri::HTML(open(@url, 'Accept-Language' => 'en-US,en;q=0.5'))
+    # rubocop:enable Security/Open
   end
 
   def table

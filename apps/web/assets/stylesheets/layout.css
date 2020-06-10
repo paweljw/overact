@@ -1,10 +1,69 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  color: #111;
+}
+
 div.row {
   display: flex;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  div.row {
+    flex-direction: row;
+  }
 }
 
 div.col {
   flex: 1;
   margin-right: 15px;
+  display: flex;
+}
+
+div.header {
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(90deg, #0074D9 0%, #B10DC9 80%);
+  margin: 0;
+}
+
+div.header a {
+  font-size: 180%;
+  color: #fff;
+  margin: 0;
+  padding: 12px 15px;
+  display: block;
+}
+
+div.header a:hover {
+  text-decoration: none;
+}
+
+.wrapper {
+  padding: 0 15px;
+}
+
+a, a:visited, a:active {
+  text-decoration: none;
+  color: #0074d9;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #7FDBFF;
+}
+
+.footer {
+  font-size: 80%;
+  color: #bbb;
+  text-align: center;
+}
+
+/* ugh */
+.no-flex {
+  display: block !important;
 }
