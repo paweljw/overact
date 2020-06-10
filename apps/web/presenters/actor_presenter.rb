@@ -7,7 +7,12 @@ module Web
     end
 
     def image_url_with_fallback
-      _raw photo&.url || image_url || 'https://via.placeholder.com/150'
+      photo_url = photo&.url
+
+      return _raw(photo_url) if photo_url
+      # ugly hack due to double-escaping somewhere
+      return _raw(image_url.gsub('&#x2F;', '/')) if image_url
+      _raw('https://via.placeholder.com/150')
     end
 
     def imdb_url
