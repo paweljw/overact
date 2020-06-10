@@ -5,6 +5,7 @@ gem 'haml'
 gem 'hanami',       '~> 1.3'
 gem 'hanami-model', '~> 1.3'
 gem 'nokogiri'
+gem 'image_processing', '~> 1.8'
 
 gem 'pg'
 

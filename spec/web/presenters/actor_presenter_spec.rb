@@ -21,12 +21,12 @@ RSpec.describe Web::ActorPresenter do
     end
   end
 
-  describe '#image_url_with_fallback' do
+  describe '#photo_url' do
     context 'when photo present' do
       let(:actor) { Actor.new(photo_data: { id: '123.jpg', storage: 'store', metadata: {} }, image_url: 'nah') }
 
       it 'returns photo' do
-        expect(subject.image_url_with_fallback).to eq '/uploads/123.jpg'
+        expect(subject.photo_url).to eq '/uploads/123.jpg'
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe Web::ActorPresenter do
       let(:actor) { Actor.new(image_url: 'nah') }
 
       it 'returns image_url' do
-        expect(subject.image_url_with_fallback).to eq 'nah'
+        expect(subject.photo_url).to eq 'nah'
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe Web::ActorPresenter do
       let(:actor) { Actor.new }
 
       it 'returns placeholder' do
-        expect(subject.image_url_with_fallback).to eq 'https://via.placeholder.com/150'
+        expect(subject.photo_url).to eq 'https://via.placeholder.com/150'
       end
     end
   end

@@ -7,4 +7,5 @@ Shrine.storages = {
 }
 
 Shrine.plugin :remote_url, max_size: 40 * 1024 * 1024
+Shrine.plugin :derivatives
 

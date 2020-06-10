@@ -32,6 +32,7 @@ RSpec.describe PromoteActorPhoto do
     it 'calls attacher and saves' do
       expect(attacher).to receive(:assign_remote_url).with('an_url')
       expect(attacher).to receive(:promote)
+      expect(attacher).to receive(:create_derivatives)
       expect(attacher).to receive(:data).and_return('data double')
       expect(repo).to receive(:update).with(1, photo_data: 'data double')
 

@@ -10,6 +10,7 @@ class PromoteActorPhoto
     return if !actor.image_url || actor.photo_data
 
     @attacher.assign_remote_url(actor.image_url)
+    @attacher.create_derivatives
     @attacher.promote
 
     @repo.update(actor_id, photo_data: @attacher.data)
