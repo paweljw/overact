@@ -1,5 +1,5 @@
 .row.cast-row
-  .col-3.direction-column.actor-slot
+  .col.direction-column.actor-slot
     .image-container
       %a{href: row.actor.photo_url, target: '_blank'}
         %img.lazy{src: 'https://via.placeholder.com/150', data: { src: URI.unescape(row.actor.thumbnail_url) }}
@@ -8,7 +8,7 @@
     %br
     %h3.actor-name
       = link_to row.actor.name, row.actor.imdb_url
-  .col-3.character_name
+  .col.character_name
     %strong= row.role1.character_name
-  .col-3.character_name
+  .col.character_name
     %strong= row.role2.character_name

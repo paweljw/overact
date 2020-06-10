@@ -8,27 +8,16 @@
   cursor: pointer;
 }
 
-li h3 {
+#results_1 ul li h3, #results_2 ul li h3 {
   margin: 0 0 5px 0;
 }
 
-li p {
+#results_1 ul li p, #results_2 ul li p {
   margin: 0;
 }
 
 #results_1 ul li.active, #results_2 ul li.active {
   border: 1px solid green;
-}
-
-div.row {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-div.column {
-  float: left;
-  width: 49%;
-  margin-right: 1%;
 }
 
 button#go {

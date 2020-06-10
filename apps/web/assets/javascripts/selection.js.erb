@@ -99,9 +99,9 @@ function search(value, targetElement) {
 }
 
 window.onload = function () {
-  const button1 = document.getElementById('show_1_search');
+  const form1 = document.getElementById('show_1');
 
-  button1.addEventListener('click', function(e) {
+  form1.addEventListener('submit', function(e) {
     e.preventDefault();
     const value = document.getElementById('show_1_name').value;
     const targetElement = document.getElementById('results_1');
@@ -111,9 +111,9 @@ window.onload = function () {
     search(value, targetElement);
   });
 
-  const button2 = document.getElementById('show_2_search');
+  const form2 = document.getElementById('show_2');
 
-  button2.addEventListener('click', function(e) {
+  form2.addEventListener('click', function(e) {
     e.preventDefault();
     const value = document.getElementById('show_2_name').value;
     const targetElement = document.getElementById('results_2');
